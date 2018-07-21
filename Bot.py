@@ -3,6 +3,7 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 import asyncio
 import time 
+import os
 
 Client = discord.Client()
 client = commands.Bot(command_prefix = "*")
@@ -28,9 +29,6 @@ async def on_member_remove(member):
     
     await client.send_message(channel, embed=emb)    
 
+client.run(os.getenv('TOKEN'))
 
 
-import os
-t = os.environ.get('BOT_TOKEN')
-token = t[0]
-client.run(token)
