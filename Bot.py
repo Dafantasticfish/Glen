@@ -31,5 +31,6 @@ async def on_member_remove(member):
 
 
 import os
-token = os.environ.get(['BOT_TOKEN'])
+t = os.environ.get('BOT_TOKEN')
+token = t[0]
 client.run(token)
