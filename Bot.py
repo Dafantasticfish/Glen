@@ -5,7 +5,7 @@ import asyncio
 import time 
 import os
 import os,json
-import edit_json,read_json
+import read_json
 
 
 
