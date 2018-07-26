@@ -10,6 +10,7 @@ players = {}
 
 Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
+print(discord.__version__)
 
 @client.event
 async def on_ready():
