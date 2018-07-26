@@ -3,7 +3,7 @@ from discord.ext import commands
 import asyncio
 import time 
 
-#--------------------------------- JSON Stuff --------------
+#---------------------- JSON Stuff -------------------------
 import os,json
 def read_json(file_name):
 	if file_name.endswith('.json')==False:
@@ -24,7 +24,7 @@ def edit_json(file_name,items):
 		file_name=file_name+'.json'
 	with open(file_name,"w") as f:
 		json.dump(items,f)
-#------------------------------------------------------------
+#----------------------------General---------------------------
 
 client = commands.Bot(command_prefix = "!")
 
@@ -40,7 +40,7 @@ async def on_ready():
     print(client.user.id)
     for server in client.servers:
         print(server.name)
-
+#----------------------Member join/leave---------------------
 @client.event
 async def on_member_join(member):
     channel = discord.utils.get(member.server.channels, name = 'welcome')
@@ -58,22 +58,29 @@ async def on_member_remove(member):
     
     await client.send_message(channel, embed=emb)    
 
+@client.event
+async def on_member_join(member):
+        role = discord.utils.get(member.server.roles, name='members')
+        await client.add_roles(member,role)
+
+#---------------------Music Player Code---------------------
+
 
 @client.command(pass_context=True)
 async def join(ctx):
     channel = ctx.message.author.voice.voice_channel
     await client.join_voice_channel(channel)
 
+
 @client.command(pass_context=True)
 async def leave(ctx):
-    server = ctx.message.server
-    voice_client = client.voice_client_in(server)
-    await voice_client.disconnect()
+        server = ctx.message.server
+        voice_client = client.voice_client_in(server)
+        await voice_client.disconnect()
+ 
 
 
-
-
-#Checks if members role is in approved roles
+#-------------------------Reaction Roles----------------------
 def is_approved():
 	def predicate(ctx):
 		if ctx.message.author is ctx.message.server.owner:
@@ -127,13 +134,10 @@ async def er(ctx):
 async def on_reaction_add(reaction,user):
 	if reaction.message.id in active_messages and reaction.emoji in reaction_roles and user != client.user:
 		role=discord.utils.get(reaction.message.server.roles,id=reaction_roles[reaction.emoji])
-		for r_id in reaction_roles.values():
-			e_role=discord.utils.get(reaction.message.server.roles,id=r_id)
-			if e_role in user.roles:
-				await client.remove_roles(user,e_role)
 		await client.remove_reaction(reaction.message,reaction.emoji,user)
 		await client.add_roles(user,role)
 
+#------------------------------------Token-----------------------------------
 
 
 client.run(os.getenv('TOKEN'))
