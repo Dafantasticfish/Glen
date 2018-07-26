@@ -1,5 +1,6 @@
 import discord
 import os,json
+import function
 from functions import edit_json,read_json
 from discord.ext.commands import Bot
 from discord.ext import commands
