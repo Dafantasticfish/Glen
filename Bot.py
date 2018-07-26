@@ -137,6 +137,9 @@ async def on_reaction_add(reaction,user):
 		await client.remove_reaction(reaction.message,reaction.emoji,user)
 		await client.add_roles(user,role)
 
+for r_id in reaction_roles.values():
+    e_role=discord.utils.get(reaction.message.server.roles,id=r_id)
+
 #------------------------------------Token-----------------------------------
 
 
