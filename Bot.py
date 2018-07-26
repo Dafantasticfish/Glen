@@ -27,7 +27,7 @@ def edit_json(file_name,items):
 	with open(file_name,"w") as f:
 		json.dump(items,f)
 
-Client = discord.Client()
+
 client = commands.Bot(command_prefix = "!")
 
 
