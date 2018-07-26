@@ -5,8 +5,11 @@ import asyncio
 import time 
 import os
 
+
+players = {}
+
 Client = discord.Client()
-client = commands.Bot(command_prefix = "*")
+client = commands.Bot(command_prefix = "!")
 
 @client.event
 async def on_ready():
@@ -28,14 +31,15 @@ async def on_member_remove(member):
     emb.set_author(name = member.display_name+" Left", icon_url = member.avatar_url)
     
     await client.send_message(channel, embed=emb)    
- 
-@client.command(pass_context_True)
-async def join(ctx)
+
+@client.command(pass_context=True)
+async def join(ctx):
     channel = ctx.message.author.voice.voice_channel
     await client.join_voice_channel(channel)
 
 
 
+
+
+
 client.run(os.getenv('TOKEN'))
-
-
