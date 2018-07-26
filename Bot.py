@@ -2,7 +2,6 @@ import discord
 import os,json
 from discord.ext.commands import Bot
 from discord.ext import commands
-from functions import edit_json,read_json
 import asyncio
 import time 
 import os
