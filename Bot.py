@@ -4,7 +4,6 @@ from discord.ext import commands
 import asyncio
 import time 
 import os
-from functions import edit_json,read_json
 import os,json
 
 
@@ -48,8 +47,7 @@ async def leave(ctx):
 
 
 
-from discord.ext import commands
-from functions import edit_json,read_json
+
 
 bot=commands.Bot(command_prefix='!')
 
