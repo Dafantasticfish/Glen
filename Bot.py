@@ -28,6 +28,13 @@ async def on_member_remove(member):
     emb.set_author(name = member.display_name+" Left", icon_url = member.avatar_url)
     
     await client.send_message(channel, embed=emb)    
+ 
+@client.command(pass_context_True)
+async def join(ctx)
+    channel = ctx.message.author.voice.voice_channel
+    await client.join_voice_channel(channel)
+
+
 
 client.run(os.getenv('TOKEN'))
 
