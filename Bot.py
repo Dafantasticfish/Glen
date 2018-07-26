@@ -26,7 +26,7 @@ def edit_json(file_name,items):
 		json.dump(items,f)
 #----------------------------General---------------------------
 
-client = commands.Bot(command_prefix = "!")
+client = commands.Bot(command_prefix = "!!")
 
 reaction_roles=read_json('reaction_roles')
 active_messages=[]
