@@ -39,7 +39,24 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     for server in client.servers:
-        print(server.name)
+    print(server.name)
+
+#----------music bot---------------------------------------
+
+@client.command(pass_context=True)
+async def join(ctx):
+    channel = ctx.message.author.voice.voice_channel
+    await client.join_voice_channel(channel)
+
+@client.command(pass_context=True)
+async def leave(ctx):
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    await voice_client.disconnect()
+
+
+
+#reaction role----------------------------------------------------
 
 @client.event
 async def on_member_join(member):
