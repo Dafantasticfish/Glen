@@ -30,7 +30,7 @@ client = commands.Bot(command_prefix = "!")
 
 reaction_roles=read_json('reaction_roles')
 active_messages=[]
-approved_roles=['Admin']
+approved_roles=['Bots']
 
 
 @client.event
