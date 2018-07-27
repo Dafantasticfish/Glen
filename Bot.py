@@ -3,7 +3,7 @@ from discord.ext import commands
 import asyncio
 import time 
 
-#---------------------- JSON Stuff -------------------------
+#--------------------------------- JSON Stuff --------------
 import os,json
 def read_json(file_name):
 	if file_name.endswith('.json')==False:
@@ -24,7 +24,7 @@ def edit_json(file_name,items):
 		file_name=file_name+'.json'
 	with open(file_name,"w") as f:
 		json.dump(items,f)
-#----------------------------General---------------------------
+#------------------------------------------------------------
 
 client = commands.Bot(command_prefix = "!")
 
@@ -40,11 +40,11 @@ async def on_ready():
     print(client.user.id)
     for server in client.servers:
         print(server.name)
-#----------------------Member join/leave---------------------
+
 @client.event
 async def on_member_join(member):
     channel = discord.utils.get(member.server.channels, name = 'welcome')
-    emb = (discord.Embed(title = " Welcome to " +str(member.server), color = 484848))
+    emb = discord.Embed(title = " Welcome to " +str(member.server), color = 484848)
     emb.set_author(name = member.display_name+" joined", icon_url = member.avatar_url)
     
     await client.send_message(channel, embed=emb)
@@ -55,14 +55,8 @@ async def on_member_remove(member):
     channel = discord.utils.get(member.server.channels, name = 'goodbye')
     emb = (discord.Embed(title = " Goodbye :frowning2:  ", color = 484848))
     emb.set_author(name = member.display_name+" Left", icon_url = member.avatar_url)
+    
     await client.send_message(channel, embed=emb)    
-
-@client.event
-async def on_member_join(member):
-        role = discord.utils.get(member.server.roles, name='members')
-        await client.add_roles(member,role)
-
-#---------------------Music Player Code---------------------
 
 
 @client.command(pass_context=True)
@@ -70,16 +64,16 @@ async def join(ctx):
     channel = ctx.message.author.voice.voice_channel
     await client.join_voice_channel(channel)
 
-
 @client.command(pass_context=True)
 async def leave(ctx):
-        server = ctx.message.server
-        voice_client = client.voice_client_in(server)
-        await voice_client.disconnect()
- 
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    await voice_client.disconnect()
 
 
-#-------------------------Reaction Roles----------------------
+
+
+#Checks if members role is in approved roles
 def is_approved():
 	def predicate(ctx):
 		if ctx.message.author is ctx.message.server.owner:
@@ -136,8 +130,6 @@ async def on_reaction_add(reaction,user):
         await client.remove_reaction(reaction.message,reaction.emoji,user)
         await client.add_roles(user,role)
 
-		
-#------------------------------------Token-----------------------------------
 
 
 client.run(os.getenv('TOKEN'))
