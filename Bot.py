@@ -39,7 +39,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     for server in client.servers:
-    print(server.name)
+    	print(server.name)
 
 
 
