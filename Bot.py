@@ -68,7 +68,7 @@ async def join(ctx):
 async def leave(ctx):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
-    await voice_client.remove()
+    await voice_client.disconnect()
 
 
 
