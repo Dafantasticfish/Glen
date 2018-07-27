@@ -61,15 +61,14 @@ async def on_member_remove(member):
 
 @client.command(pass_context=True)
 async def join(ctx):
-        channel = ctx.message.author.voice.voice_channel
-        await client.join_voice_channel(channel)
-
+    channel = ctx.message.author.voice.voice_channel
+    await client.join_voice_channel(channel)
 
 @client.command(pass_context=True)
 async def leave(ctx):
-        server = ctx.message.server
-        voice_client = client.voice_client_in(server)
-        await voice_client.disconnect()
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    await voice_client.disconnect()
 
 #Checks if members role is in approved roles
 def is_approved():
