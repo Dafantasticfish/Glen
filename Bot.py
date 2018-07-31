@@ -140,7 +140,7 @@ async def on_message(message):
 
 @client.command()
 async def tank():
-	await client.say('tank sucks dick! @Single Pringle#6045 ')
+	await client.say('tank sucks dick!')
 	
 @client.command()
 async def echo(*args):
