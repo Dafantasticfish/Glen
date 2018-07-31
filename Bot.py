@@ -131,6 +131,30 @@ async def on_reaction_add(reaction,user):
         await client.remove_reaction(reaction.message,reaction.emoji,user)
         await client.add_roles(user,role)
 
+#---------------------------------------------------
+@client.event
+async def on_message(message):
+	print('a user has sent a message.')
+	await client/process_commands(message)
 
+
+@client.command()
+async def tank():
+	await client.say('tank sucks dick!')
+	
+@client.command()
+async def echo(*args):
+	output = ''
+	for word in args:
+		output += word
+		output += ' '
+	await client.say(output)
+	
+
+
+
+
+
+#---------------------------------------------------
 
 client.run(os.getenv('TOKEN'))
