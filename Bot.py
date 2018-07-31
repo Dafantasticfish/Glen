@@ -135,7 +135,7 @@ async def on_reaction_add(reaction,user):
 @client.event
 async def on_message(message):
 	print('a user has sent a message.')
-	await client/process_commands(message)
+	await client.process_commands(message)
 
 
 @client.command()
