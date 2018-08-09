@@ -150,7 +150,18 @@ async def echo(*args):
 		output += ' '
 	await client.say(output)
 	
+	
 
+@bot.command(pass_context=True)
+async def servers(ctx):
+    embed = discord.Embed(title="some title if you want", description=f'some description if you want',
+                            colour=discord.Colour(0x0AFA02))
+    server_list = '' 
+    for server in bot.servers:
+            server_list += f'{server.name} \n'
+
+    embed.add_field(name='servers', value=server_list)
+    await bot.say(embed=embed)
 
 
 
