@@ -152,7 +152,7 @@ async def echo(*args):
 	
 	
 
-@bot.command(pass_context=True)
+@client.command(pass_context=True)
 async def servers(ctx):
     embed = discord.Embed(title="some title if you want", description=f'some description if you want',
                             colour=discord.Colour(0x0AFA02))
