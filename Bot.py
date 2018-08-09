@@ -154,8 +154,8 @@ async def echo(*args):
 
 @client.command(pass_context=True)
 async def servers(ctx):
-    embed = discord.Embed(title="some title if you want", description=f'some description if you want',
-                            colour=discord.Colour(0x0AFA02))
+    embed = discord.Embed(title="List of servers Glen Is in",
+                            colour=discord.Colour(484848))
     server_list = '' 
     for server in client.servers:
             server_list += f'{server.name} \n'
