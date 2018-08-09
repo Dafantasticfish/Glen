@@ -157,11 +157,11 @@ async def servers(ctx):
     embed = discord.Embed(title="some title if you want", description=f'some description if you want',
                             colour=discord.Colour(0x0AFA02))
     server_list = '' 
-    for server in bot.servers:
+    for server in client.servers:
             server_list += f'{server.name} \n'
 
     embed.add_field(name='servers', value=server_list)
-    await bot.say(embed=embed)
+    await client.say(embed=embed)
 
 
 
