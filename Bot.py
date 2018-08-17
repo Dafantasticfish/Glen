@@ -4,23 +4,6 @@ import asyncio
 import time 
 import os,json
 
-client = commands.Bot(command_prefix = "!")
-
-
-
-reaction_roles=read_json('reaction_roles')
-active_messages=[]
-approved_roles=['Admin']
-
-
-@client.event
-async def on_ready():
-    print("JAY, YOURE BOT IS READY!")
-    print(client.user.name)
-    print(client.user.id)
-    for server in client.servers:
-        print(server.name)
-
 #--------------------------------- JSON Stuff --------------
 
 def read_json(file_name):
@@ -43,6 +26,24 @@ def edit_json(file_name,items):
 	with open(file_name,"w") as f:
 		json.dump(items,f)
 #welcome/goodbye----------------------------------------------------
+
+client = commands.Bot(command_prefix = "!")
+
+
+
+reaction_roles=read_json('reaction_roles')
+active_messages=[]
+approved_roles=['Admin']
+
+
+@client.event
+async def on_ready():
+    print("JAY, YOURE BOT IS READY!")
+    print(client.user.name)
+    print(client.user.id)
+    for server in client.servers:
+        print(server.name)
+
 
 @client.event
 async def on_member_join(member):
