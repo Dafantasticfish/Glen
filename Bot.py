@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import asyncio
 import time 
+import os,json
 
 client = commands.Bot(command_prefix = "!")
 
@@ -21,7 +22,7 @@ async def on_ready():
         print(server.name)
 
 #--------------------------------- JSON Stuff --------------
-import os,json
+
 def read_json(file_name):
 	if file_name.endswith('.json')==False:
 		file_name=file_name+'.json'
