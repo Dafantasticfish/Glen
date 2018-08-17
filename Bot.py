@@ -3,6 +3,23 @@ from discord.ext import commands
 import asyncio
 import time 
 
+client = commands.Bot(command_prefix = "!")
+
+
+
+reaction_roles=read_json('reaction_roles')
+active_messages=[]
+approved_roles=['Admin']
+
+
+@client.event
+async def on_ready():
+    print("JAY, YOURE BOT IS READY!")
+    print(client.user.name)
+    print(client.user.id)
+    for server in client.servers:
+        print(server.name)
+
 #--------------------------------- JSON Stuff --------------
 import os,json
 def read_json(file_name):
@@ -24,7 +41,7 @@ def edit_json(file_name,items):
 		file_name=file_name+'.json'
 	with open(file_name,"w") as f:
 		json.dump(items,f)
-#reaction role----------------------------------------------------
+#welcome/goodbye----------------------------------------------------
 
 @client.event
 async def on_member_join(member):
@@ -54,6 +71,8 @@ async def leave(ctx):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
     await voice_client.disconnect()
+
+#reaction role----------------------------------------------------
 
 #Checks if members role is in approved roles
 def is_approved():
