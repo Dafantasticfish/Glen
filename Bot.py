@@ -109,6 +109,7 @@ async def remove_er(ctx,emoji):
 	del reaction_roles[emoji]
 	edit_json('reaction_roles',reaction_roles)
 
+@is_approved()
 @client.command(pass_context=True)
 async def er(ctx):
 	'''React with Emojis to assign a role to yourself'''
