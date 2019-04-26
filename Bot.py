@@ -142,8 +142,8 @@ async def on_message(message):
 
 
 @client.command()
-async def tank():
-	await client.say('tank sucks dick!')
+async def owain():
+	await client.say('owain smells of shit and looks like woody from suit life of zack and cody @everyone ')
 	
 @client.command()
 async def echo(*args):
