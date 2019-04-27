@@ -167,8 +167,7 @@ async def servers(ctx):
     for server in client.servers:
             server_list += f'{server.name} \n'
 
-    embed.add_field(name='servers', value=server_list)
-    await client.say
+    embed.add_field(name='servers', value=server_list
 
 
 
