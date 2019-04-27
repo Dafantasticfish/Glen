@@ -169,7 +169,7 @@ async def servers(ctx):
 
     embed.add_field(name='servers', value=server_list
 
-
+await client.say
 
 
 #---------------------------------------------------
