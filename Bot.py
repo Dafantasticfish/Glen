@@ -140,8 +140,6 @@ async def on_message(message):
 	print('a user has sent a message.')
 	await client.process_commands(message)
 
-msg = await self.send_message(dest, content, tts=True)
-
 @client.command()
 async def owain():
 	await client.say('owain smells of shit and looks like woody from suit life of zack and cody @everyone ')
